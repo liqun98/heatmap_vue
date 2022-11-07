@@ -25,13 +25,17 @@ export default {
   created() {
     const that = this;
     getImg(that);
-    setInterval(() => {
+    this.intervalId = setInterval(() => {
       getImg(that);
     }, 3000);
   },
+  destroyed() {
+    clearInterval(this.intervalId)
+  },
   data() {
     return {
-      img_url: ""
+      img_url: "",
+      intervalId: 0,
     };
   }
 };
